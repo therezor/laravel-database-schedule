@@ -1,0 +1,28 @@
+{
+  "name": "therezor/laravel-database-schedule",
+  "description": "Add laravel task to your schedule strait from database.",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": "^7.0",
+    "laravel/framework": "5.5.* || 5.6.*"
+  },
+  "authors": [
+    {
+      "name": "Roman Nagirnyi",
+      "email": "rnagirnyi@smartcats.pro"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "TheRezor\\DatabaseSchedule\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "TheRezor\\DatabaseSchedule\\ServiceProvider"
+      ]
+    }
+  }
+}
