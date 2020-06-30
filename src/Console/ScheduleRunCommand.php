@@ -11,7 +11,7 @@ class ScheduleRunCommand extends BaseScheduleCommand
 {
     public function handle()
     {
-        $schedules = Config::get('database-schedule.cache.enabled') ? $this->getFromCache() : Schedule::get()->toArray();
+        $schedules = Config::get('database-schedule.cache.enabled') ? $this->getFromCache() : $this->getFromDatabase();
 
         foreach ($schedules as $s) {
             $event = $this->schedule->command($s['command'], $s['params'])->cron($s['expression']);
@@ -34,7 +34,12 @@ class ScheduleRunCommand extends BaseScheduleCommand
         $key = Config::get('database-schedule.cache.key', 'database_schedule');
 
         return Cache::store($store)->rememberForever($key, function () {
-            return Schedule::get()->toArray();
+            return $this->getFromDatabase();
         });
+    }
+
+    protected function getFromDatabase()
+    {
+        return Schedule::get()->toArray();
     }
 }
