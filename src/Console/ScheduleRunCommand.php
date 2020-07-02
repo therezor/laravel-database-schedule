@@ -14,18 +14,22 @@ class ScheduleRunCommand extends BaseScheduleCommand
         $schedules = Config::get('database-schedule.cache.enabled') ? $this->getFromCache() : $this->getFromDatabase();
 
         foreach ($schedules as $s) {
-            $event = $this->schedule->command($s['command'], $s['params'])->cron($s['expression']);
-
-            if ($s['even_in_maintenance_mode']) {
-                $event->evenInMaintenanceMode();
-            }
-
-            if ($s['without_overlapping']) {
-                $event->withoutOverlapping();
-            }
+            $this->execCommand($s);
         }
 
         parent::handle();
+    }
+
+    protected function execCommand($schedule) {
+        $event = $this->schedule->command($schedule['command'], $schedule['params'])->cron($schedule['expression']);
+
+        if ($schedule['even_in_maintenance_mode']) {
+            $event->evenInMaintenanceMode();
+        }
+
+        if ($schedule['without_overlapping']) {
+            $event->withoutOverlapping();
+        }
     }
 
     protected function getFromCache()
