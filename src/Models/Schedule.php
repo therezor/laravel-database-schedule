@@ -2,10 +2,7 @@
 
 namespace TheRezor\DatabaseSchedule\Models;
 
-use App\Filters\System\NotificationFilter;
-use EloquentFilter\Filterable;
 use Illuminate\Console\Scheduling\ManagesFrequencies;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
 

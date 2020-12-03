@@ -9,25 +9,7 @@ Store your schedules in database (cache friendly)
 
 3) Apply migration ```php artisan migrate```
 
-4) Add new Schedule command to your app/Console/Kernel.php
-
-```php
-<?php
-class Kernel extends ConsoleKernel
-{
-    /**
-     * The Artisan commands provided by your application.
-     *
-     * @var array
-     */
-    protected $commands = [
-       \TheRezor\DatabaseSchedule\Console\ScheduleRunCommand::class,
-    ];
-}
-?>
-```
-
-5) Use `TheRezor\DatabaseSchedule\Models\Schedule` to manage your database schedule
+4) Use `TheRezor\DatabaseSchedule\Models\Schedule` to manage your database schedule
 
 ```php
 <?php
