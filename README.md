@@ -5,7 +5,7 @@ Store your schedules in database (cache friendly)
 
 1) Run ```composer require therezor/laravel-database-schedule``` in your laravel project root folder
 
-2) Run ```php artisan vendor:publish```
+2) Run ```php artisan vendor:publish --provider="TheRezor\DatabaseSchedule\ServiceProvider"```
 
 3) Apply migration ```php artisan migrate```
 
